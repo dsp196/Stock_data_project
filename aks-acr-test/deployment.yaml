@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: acr-test-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: acr-test
+  template:
+    metadata:
+      labels:
+        app: acr-test
+    spec:
+      containers:
+      - name: acr-test-container
+        image: acrstockdataproject.azurecr.io/aks-acr-test:v1
+        ports:
+        - containerPort: 80
